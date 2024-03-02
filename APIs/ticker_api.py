@@ -31,3 +31,32 @@ with open('AAPL_prices.json', 'w') as json_file:
     json.dump(data_content, json_file)
 
 print(response.text)
+
+#The chunk below creates a candlestick chart using the json data:
+
+if response.status_code == 200:
+ data = json.loads(response.text)
+
+ ohlc = []
+
+ for item in data:
+     timestamp, open_price, high_price, low_price, close_price, volume = item
+     ohlc.append([timestamp, open_price, high_price, low_price, close_price])
+
+
+ fig, ax = plt.subplots()
+ fig.subplots_adjust(bottom=0.2)  
+
+ candlestick_ochl(ax, ohlc, width=0.6, colorup='g', colordown='r')
+
+ ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
+ plt.xticks(rotation=45)
+ ax.xaxis_date() 
+ plt.title('Candlestick Chart')
+ plt.xlabel('Date')
+ plt.ylabel('Price')
+
+ plt.show()
+else:
+print("Request failed with status code:", response.status_code)
+
