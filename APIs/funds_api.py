@@ -8,7 +8,7 @@ def load_json(json_file):
         data = json.load(file)
     return data
 
-json_file = '/Users/seb/Desktop/Web_Scraper/CATEGORIES.json'  # Replace with your JSON file path
+json_file = '.json'
 
 data = load_json(json_file)
 
