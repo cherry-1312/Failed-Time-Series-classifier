@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from tqdm import tqdm
 
-data = pd.read_csv('/Users/seb/Desktop/stock ids.csv')
+data = pd.read_csv('.csv')
 
 data_dict = {}
 
